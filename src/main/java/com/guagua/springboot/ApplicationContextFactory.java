@@ -25,9 +25,7 @@ package com.guagua.springboot;
 import java.util.function.Supplier;
 
 import org.springframework.beans.BeanUtils;
-//import org.springframework.boot.SpringApplication;
-import com.guagua.springboot.WebApplicationType;
-import org.springframework.context.ConfigurableApplicationContext;
+import com.guagua.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.io.support.SpringFactoriesLoader;
 

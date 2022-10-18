@@ -31,6 +31,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import com.guagua.context.ApplicationContextInitializer;
+import com.guagua.context.ConfigurableApplicationContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -55,9 +57,7 @@ import org.springframework.boot.convert.ApplicationConversionService;
 import org.springframework.boot.web.reactive.context.AnnotationConfigReactiveWebServerApplicationContext;
 import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ApplicationListener;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotatedBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigUtils;
@@ -308,7 +308,7 @@ public class SpringApplication {
          */
         setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
 
-        // Class demoApplication.class
+        // Class DemoApplication.class
         this.mainApplicationClass = deduceMainApplicationClass();
     }
 
@@ -395,13 +395,24 @@ public class SpringApplication {
              * 这里对上下文做一些额外的完善
              */
             prepareContext(bootstrapContext, context, environment, listeners, applicationArguments, printedBanner);
+            /**
+             *
+             */
             refreshContext(context);
+
+            /**
+             *
+             */
             afterRefresh(context, applicationArguments);
+
             Duration timeTakenToStartup = Duration.ofNanos(System.nanoTime() - startTime);
             if (this.logStartupInfo) {
                 new StartupInfoLogger(this.mainApplicationClass).logStarted(getApplicationLog(), timeTakenToStartup);
             }
             listeners.started(context, timeTakenToStartup);
+            /**
+             *
+             */
             callRunners(context, applicationArguments);
         }
         catch (Throwable ex) {
